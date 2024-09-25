@@ -9,11 +9,20 @@ public static class Arrays
     public static double[] MultiplesOf(double number, int length)
     {
         // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
 
-        return []; // replace this return statement with your own
+        // Create a fixed double array (with the received length) that will hold the multiples 
+        double[] multiples = new double[length];
+
+        // Create a loop that will run until the length given is reached.
+        // Inside the loop, add all multiples of the given number to the multiples array by selecting 
+        // an index in the array and placing the result of "number" * (i + 1).
+        for (int i = 0; i < length; i++)
+        {
+            multiples[i] = (i + 1) * number;
+        }
+
+        // Return the final version of the multiples array
+        return multiples;
     }
 
     /// <summary>
