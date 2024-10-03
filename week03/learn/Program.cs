@@ -9,5 +9,8 @@ public class Program
 
         Console.WriteLine("\n======================\nTranslator\n======================");
         Translator.Run();
+
+        Console.WriteLine("\n======================\nAnswers to technical questions\n======================");
+        LetterDuplicate.Run();
     }
 }
