@@ -64,6 +64,18 @@ public static class SetsAndMaps
         {
             var fields = line.Split(",");
             // TODO Problem 2 - ADD YOUR CODE HERE
+            if (!string.IsNullOrEmpty(fields[3]))
+            {
+                string degree = fields[3].Trim();
+                if (!degrees.ContainsKey(degree))
+                {
+                    degrees.Add(degree, 1);
+                }
+                else
+                {
+                    degrees[degree] += 1;
+                }
+            }
         }
 
         return degrees;
@@ -88,7 +100,49 @@ public static class SetsAndMaps
     public static bool IsAnagram(string word1, string word2)
     {
         // TODO Problem 3 - ADD YOUR CODE HERE
-        return false;
+        var letterFrequency = new Dictionary<char, int>();
+
+        word1 = word1.Replace(" ", "").ToLower();
+        word2 = word2.Replace(" ", "").ToLower();
+
+        if (word1.Length != word2.Length)
+        {
+            return false;
+        }
+        else
+        {
+            foreach (char letter in word1)
+            {
+                if (letterFrequency.ContainsKey(letter))
+                {
+                    letterFrequency[letter] += 1;
+                }
+                else
+                {
+                    letterFrequency.Add(letter, 1);
+                }
+
+            }
+
+            foreach (char letter in word2)
+            {
+                if (letterFrequency.ContainsKey(letter))
+                {
+                    letterFrequency[letter] -= 1;
+
+                    if (letterFrequency[letter] < 0)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     /// <summary>
