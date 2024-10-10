@@ -229,11 +229,11 @@ public class LinkedList : IEnumerable<int>
     {
         // TODO Problem 5
 
-        var curr = _tail; // Start at the beginning since this is a forward iteration.
+        var curr = _tail; // Start at the end since this is a backward iteration.
         while (curr is not null)
         {
             yield return curr.Data; // Provide (yield) each item to the user
-            curr = curr.Prev; // Go forward in the linked list
+            curr = curr.Prev; // Go backwards in the linked list
         }
     }
 
