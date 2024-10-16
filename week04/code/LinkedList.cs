@@ -164,8 +164,14 @@ public class LinkedList : IEnumerable<int>
                 // new node and reconnect the links to insert.
                 else
                 {
-                    curr.Next!.Prev = curr.Prev; // Connect the next node to the node before 'value'
-                    curr.Prev!.Next = curr.Next; // Connect the previous node to the node after 'value'
+                    if (curr.Next is not null)
+                    {
+                        curr.Next.Prev = curr.Prev; // Connect the next node to the node before 'value'
+                    }
+                    if (curr.Prev is not null)
+                    {
+                        curr.Prev.Next = curr.Next; // Connect the previous node to the node after 'value'
+                    }
                     curr.Prev = null; // Disconnect node before 'value' from 'value
                     curr.Next = null; // Disconnect node after 'value' from 'value
                 }
