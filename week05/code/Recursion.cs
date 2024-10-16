@@ -1,4 +1,6 @@
 using System.Collections;
+using Microsoft.VisualBasic;
+using Microsoft.VisualStudio.TestPlatform.Utilities;
 
 public static class Recursion
 {
@@ -156,6 +158,22 @@ public static class Recursion
     {
         // TODO Start Problem 4
 
+        // Base Case
+        if (!pattern.Contains("*"))
+        {
+            if (!results.Contains(pattern))
+            {
+                results.Add(pattern);
+            }
+            return;
+        }
+
+        var index = pattern.IndexOf('*');
+        var ceroReplace = pattern[..index] + "0" + pattern[(index + 1)..];
+        var oneReplace = pattern[..index] + "1" + pattern[(index + 1)..];
+
+        WildcardBinary(ceroReplace, results);
+        WildcardBinary(oneReplace, results);
 
     }
 
