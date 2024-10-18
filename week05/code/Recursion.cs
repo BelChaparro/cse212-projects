@@ -202,9 +202,7 @@ public static class Recursion
             // Base Case
             if (maze.IsEnd(x, y))
             {
-                string pathString = currPath.AsString();
-                results.Add(pathString); // Use this to add path to the results array keeping track of complete maze solutions when you find the solution.
-                Debug.WriteLine($"Path found: {pathString}"); // Debugging output
+                results.Add(currPath.AsString()); // Use this to add path to the results array keeping track of complete maze solutions when you find the solution.
 
                 // Remove position for backtracking
                 currPath.Remove((x, y));
