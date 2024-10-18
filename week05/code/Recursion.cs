@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using Microsoft.VisualBasic;
 using Microsoft.VisualStudio.TestPlatform.Utilities;
 
@@ -190,11 +192,43 @@ public static class Recursion
             currPath = new List<ValueTuple<int, int>>();
         }
 
-        // currPath.Add((1,2)); // Use this syntax to add to the current path
-
         // TODO Start Problem 5
-        // ADD CODE HERE
 
-        // results.Add(currPath.AsString()); // Use this to add your path to the results array keeping track of complete maze solutions when you find the solution.
+        // Check if current path is valid
+        if (maze.IsValidMove(currPath, x, y))
+        {
+            currPath.Add((x, y)); // Add to the current path
+
+            // Base Case
+            if (maze.IsEnd(x, y))
+            {
+                string pathString = currPath.AsString();
+                results.Add(pathString); // Use this to add path to the results array keeping track of complete maze solutions when you find the solution.
+                Debug.WriteLine($"Path found: {pathString}"); // Debugging output
+
+                // Remove position for backtracking
+                currPath.Remove((x, y));
+                return;
+            }
+
+            // Explore possible left move
+            SolveMaze(results, maze, x - 1, y, currPath);
+
+            // Explore possible right move
+            SolveMaze(results, maze, x + 1, y, currPath);
+
+            // Explore possible up move
+            SolveMaze(results, maze, x, y - 1, currPath);
+
+            // Explore possible down move
+            SolveMaze(results, maze, x, y + 1, currPath);
+
+            // Remove position for backtracking
+            currPath.Remove((x, y));
+        }
+        else
+        {
+            return;
+        }
     }
 }
