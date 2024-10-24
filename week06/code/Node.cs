@@ -13,12 +13,16 @@ public class Node
     {
         // TODO Start Problem 1
 
+        // Check for duplicate value. If true, exit
+        if (value == Data)
+            return;
+
         if (value < Data)
         {
             // Insert to the left
             if (Left is null)
                 Left = new Node(value);
-            else if (Left.Data != value)
+            else
                 Left.Insert(value);
         }
         else
@@ -26,7 +30,7 @@ public class Node
             // Insert to the right
             if (Right is null)
                 Right = new Node(value);
-            else if (Right.Data != value)
+            else
                 Right.Insert(value);
         }
     }
