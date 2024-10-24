@@ -13,7 +13,7 @@ public class Node
     {
         // TODO Start Problem 1
 
-        // Check for duplicate value. If true, exit
+        // Base Case: If the value is a duplicate, exit
         if (value == Data)
             return;
 
@@ -38,6 +38,25 @@ public class Node
     public bool Contains(int value)
     {
         // TODO Start Problem 2
+
+        // Base Case: If the value is found, return 'true'
+        if (value == Data)
+            return true;
+
+        if (value < Data)
+        {
+            // Check to the left
+            if (Left is not null)
+                return Left.Contains(value);
+
+        }
+        else
+        {
+            // Check to the right
+            if (Right is not null)
+                return Right.Contains(value);
+        }
+
         return false;
     }
 
