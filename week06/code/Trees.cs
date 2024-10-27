@@ -57,9 +57,12 @@ public static class Trees
             return;
         }
 
-        // Add middle element to the binary search tree
+        // Get middle index
         int middle = (first + last) / 2;
+
+        // Add middle element to the binary search tree
         bst.Insert(sortedNumbers[middle]);
+
         InsertMiddle(sortedNumbers, first, middle - 1, bst);
         InsertMiddle(sortedNumbers, middle + 1, last, bst);
     }
