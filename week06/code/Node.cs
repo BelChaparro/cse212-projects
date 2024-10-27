@@ -77,6 +77,5 @@ public class Node
         }
 
         return 1 + Math.Max(Left!.GetHeight(), Right!.GetHeight());
-        //return 0; // replace.
     }
 }
