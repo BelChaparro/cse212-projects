@@ -48,7 +48,6 @@ public class Node
             // Check to the left
             if (Left is not null)
                 return Left.Contains(value);
-
         }
         else
         {
@@ -63,6 +62,21 @@ public class Node
     public int GetHeight()
     {
         // TODO Start Problem 4
-        return 0; // Replace this line with the correct return statement(s)
+
+        // Base Case: return 1 when a leaf is reached (Left and Right are null).
+        if (Left is null && Right is null)
+            return 1;
+
+        if (Left is null && Right is not null)
+        {
+            return Right.GetHeight() + 1;
+        }
+        if (Right is null && Left is not null)
+        {
+            return Left.GetHeight() + 1;
+        }
+
+        return 1 + Math.Max(Left!.GetHeight(), Right!.GetHeight());
+        //return 0; // replace.
     }
 }
